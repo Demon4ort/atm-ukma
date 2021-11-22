@@ -7,7 +7,7 @@ import scalafx.Includes.{jfxDialogPane2sfx, jfxNode2sfx}
 import scalafx.scene.control._
 import scalafx.scene.layout.Region
 
-class LoginDialog extends Dialog[String] {
+class LoginDialog extends Dialog[(String, String)] {
 
   val cardNumberField = new TextField {
     headerText = "card number"
@@ -25,7 +25,7 @@ class LoginDialog extends Dialog[String] {
   dialog.content = controlGridPane
 
   val okButton: Node = dialog.lookupButton(ButtonType.OK)
-  okButton.disable = passwordField.text.value.trim.isEmpty && cardNumberField.text.value.trim.isEmpty
+  okButton.disable = passwordField.text.value.trim.isEmpty || cardNumberField.text.value.trim.isEmpty
   passwordField.text.onChange { (_, _, newValue) =>
     okButton.disable = newValue.trim.isEmpty
   }
@@ -35,7 +35,7 @@ class LoginDialog extends Dialog[String] {
 
   resultConverter = dialogButton => {
     if (dialogButton == ButtonType.OK)
-      passwordField.text.value
+      cardNumberField.text.value -> passwordField.text.value
     else null
   }
 

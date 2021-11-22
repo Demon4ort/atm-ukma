@@ -15,7 +15,8 @@ lazy val root = (project in file("."))
 
 libraryDependencies ++= Seq(
   "com.typesafe.slick" %% "slick" % "3.3.3",
-  "org.slf4j" % "slf4j-nop" % "1.7.32"
+  "org.slf4j" % "slf4j-nop" % "1.7.32",
+  "com.typesafe.slick" %% "slick-hikaricp" % "3.3.3"
 )
 
 //libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.40-R8"
@@ -41,3 +42,6 @@ libraryDependencies ++= javaFXModules.map(m =>
 //
 //libraryDependencies += "com.typesafe.akka" %% "akka-testkit" % "2.6.17"
 libraryDependencies += "org.typelevel" %% "cats-core" % "2.6.1"
+
+libraryDependencies += "org.scala-lang.modules" %% "scala-async" % "0.10.0"
+libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.value % Provided

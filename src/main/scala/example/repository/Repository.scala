@@ -1,12 +1,14 @@
 package example.repository
 
 import com.typesafe.config.ConfigFactory
-import example.entity.{Card, User}
+import example.entity.Model.Entity.Id
+import example.entity.Model.{Card, User}
 import slick.basic.DatabaseConfig
 import slick.jdbc.{H2Profile, JdbcProfile}
 
 import java.sql.Date
 import java.time.LocalDate
+import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration.{Duration, DurationInt}
 import scala.concurrent.{Await, Future}
 import scala.language.postfixOps
@@ -17,10 +19,10 @@ trait Repository {
 
   object Repository {
     def apply(configFile: String): Repository = {
-      val config = DatabaseConfig.forConfig[JdbcProfile]("repository", ConfigFactory.load(configFile))
+      val config = DatabaseConfig.forConfig[JdbcProfile]("slick-h2", ConfigFactory.load(configFile))
       val repository = new Repository(config, H2Profile)
       try {
-        //      await( students.list() ).length
+
       } catch {
         case _: Throwable => repository.createSchema()
       }
@@ -35,7 +37,8 @@ trait Repository {
     import profile.api._
 
     implicit val dateMapper = MappedColumnType.base[LocalDate, Date](ld => Date.valueOf(ld), d => d.toLocalDate)
-    val schema = cards.schema ++ users.schema //students.schema ++ grades.schema ++ courses.schema ++ assignments.schema
+
+
     val db = config.db
 
     def await[T](action: DBIO[T]): T = Await.result(db.run(action), awaitDuration)
@@ -49,11 +52,13 @@ trait Repository {
     def dropSchema() = await(DBIO.seq(schema.drop))
 
     class Cards(tag: Tag) extends Table[Card](tag, "cards") {
-      def * = (id ?, userId ?, currency, value, credit) <> (Card.tupled, Card.unapply)
+      def * = (id ?, userId ?, password, currency, value, credit, blocked) <> (Card.tupled, Card.unapply)
 
       def id = column[Int]("id", O.PrimaryKey, O.AutoInc)
 
       def userId = column[Int]("userId")
+
+      def password = column[String]("password")
 
       def currency = column[String]("currency")
 
@@ -61,15 +66,15 @@ trait Repository {
 
       def credit = column[BigDecimal]("credit")
 
+      def blocked = column[Boolean]("blocked")
+
       def userFK = foreignKey("userFK", userId, TableQuery[Users])(_.userId)
     }
 
-    object cards extends TableQuery(new Cards(_)) {
-      val compiledList = Compiled { userId: Rep[Int] =>
-        filter(_.userId === userId).sortBy(_.value.asc)
-      }
+    val cards = TableQuery[Cards]
 
-      def upsert(card: Card) = (this returning this.map(_.userId)).insertOrUpdate(card)
+    def findById(cardId: Id) = {
+      exec(cards.filter(_.id === cardId).result.map(_.head))
     }
 
     class Users(tag: Tag) extends Table[User](tag, "users") {
@@ -82,12 +87,11 @@ trait Repository {
       def * = (userId ?, name, surname) <> (User.tupled, User.unapply)
     }
 
-    object users extends TableQuery(new Users(_)) {
-      val compiledList = Compiled {
-        sortBy(_.surname.asc)
-      }
+    val users = TableQuery[Users]
 
 
-    }
+    def insert(user: User) = repository.exec(users += user)
+
+    val schema = users.schema ++ cards.schema
   }
 }

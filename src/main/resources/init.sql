@@ -9,9 +9,11 @@ CREATE TABLE IF NOT EXISTS cards
 (
     "id"       INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
     "userId"   INTEGER NOT NULL,
+    "password" VARCHAR NOT NULL,
     "currency" VARCHAR NOT NULL,
     "value"    DECIMAL NOT NULL,
-    "credit"   DECIMAL NOT NULL
+    "credit"   DECIMAL NOT NULL,
+    "blocked"  BOOLEAN NOT NULL default FALSE
 );
 
 
