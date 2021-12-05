@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #D2F7DF;"
+            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="WindowControllers.CharityTransactionController">
+    <children>
+        <Text layoutX="58.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Charity "
+              wrappingWidth="247.9449462890625">
+            <font>
+                <Font size="46.0"/>
+            </font>
+        </Text>
+        <TextField fx:id="sum" layoutX="226.0" layoutY="167.0" prefHeight="50.0" prefWidth="178.0"/>
+        <Text layoutX="67.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Input sum"
+              wrappingWidth="127.14495849609375">
+            <font>
+                <Font size="27.0"/>
+            </font>
+        </Text>
+        <Button fx:id="send" layoutX="269.0" layoutY="268.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="73.0"
+                style="-fx-font-weight: 700; -fx-background-color: #53DE81;" text="Send">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Button>
+        <Button fx:id="quit" layoutX="499.0" layoutY="36.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="57.0"
+                style="-fx-font-weight: 700; -fx-background-color: #F3557F;" text="Quit">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Button>
+        <Text fx:id="status" layoutX="229.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              wrappingWidth="171.14501953125">
+            <font>
+                <Font size="19.0"/>
+            </font>
+        </Text>
+
+    </children>
+</AnchorPane>

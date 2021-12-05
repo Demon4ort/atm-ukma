@@ -45,3 +45,5 @@ libraryDependencies += "org.typelevel" %% "cats-core" % "2.6.1"
 
 libraryDependencies += "org.scala-lang.modules" %% "scala-async" % "0.10.0"
 libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.value % Provided
+
+libraryDependencies += "com.h2database" % "h2" % "2.0.202"

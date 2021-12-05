@@ -10,9 +10,6 @@ import java.util.regex.Pattern
 import javax.crypto.SecretKeyFactory
 import javax.crypto.spec.PBEKeySpec
 
-trait Auth {
-
-  val auth: Auth
 
   class Auth(cost: Int) {
     if (cost < 0 || cost > 30) throw new Exception(s"cost $cost")
@@ -62,15 +59,6 @@ trait Auth {
     }
   }
 
-
-  object Auth {
-    def apply(cost: Int = defaultCost) = new Auth(cost)
-
-
-  }
-
-}
-
 object Auth {
   val defaultCost = 16
 
@@ -79,4 +67,5 @@ object Auth {
   val size = 128
   val layout: Pattern = Pattern.compile("\\$31\\$(\\d\\d?)\\$(.{43})")
 
+  def apply(cost: Int = defaultCost) = new Auth(cost)
 }

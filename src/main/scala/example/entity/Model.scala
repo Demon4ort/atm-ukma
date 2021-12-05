@@ -3,7 +3,7 @@ package example.entity
 import cats.implicits.none
 import example.entity.Model.Entity.Id
 
-import java.util.UUID
+import java.time.LocalDateTime
 
 object Model {
   sealed trait Entity extends Product with Serializable
@@ -17,15 +17,19 @@ object Model {
 
   final case class Card(id: Option[Id] = none,
                         userId: Option[Id] = none,
-                        password: String = "test",
-                        currency: String = UUID.randomUUID.toString,
-                        value: BigDecimal = 10,
-                        credit: BigDecimal = 0,
+                        //                        currency: String = UUID.randomUUID.toString,
+                        value: Double = 0,
                         blocked: Boolean = false) extends Entity
 
-  final case class User(userId: Option[Id] = none,
-                        name: String = "default-user-name",
-                        surname: String = "default-user-surname") extends Entity
+  final case class User(id: Option[Id] = none,
+                        userName: String = "default-user-name",
+                        password: String) extends Entity
+
+  final case class Transaction(id: Option[Id] = none,
+                               fromId: Id,
+                               toId: Id,
+                               value: Double,
+                               date: LocalDateTime = LocalDateTime.now) extends Entity
 
   object Entity {
     type Id = Int

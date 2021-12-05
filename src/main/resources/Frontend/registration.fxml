@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" style="-fx-background-color: #D2F7DF;" xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="WindowControllers.ControllerRegistration">
+    <children>
+        <Text layoutX="191.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ATM GO "
+              wrappingWidth="276.0">
+            <font>
+                <Font size="51.0"/>
+            </font>
+        </Text>
+        <TextArea fx:id="login_field" layoutX="149.0" layoutY="163.0" prefHeight="21.0" prefWidth="276.0"
+                  promptText="login">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </TextArea>
+        <Text layoutX="228.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 700;"
+              text="Реєєтрація" wrappingWidth="276.0">
+            <font>
+                <Font size="21.0"/>
+            </font>
+        </Text>
+        <Button fx:id="reg" layoutX="190.0" layoutY="322.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="194.0"
+                style="-fx-background-color: #53DE81; -fx-font-weight: 700;" text="Create account"
+                textAlignment="CENTER">
+            <font>
+                <Font size="17.0"/>
+            </font>
+        </Button>
+        <Text fx:id="status" layoutX="199.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              wrappingWidth="176.53668212890625">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Text>
+        <Button fx:id="sign" layoutX="488.0" layoutY="41.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="81.0"
+                style="-fx-background-color: #F3557F; -fx-font-weight: 700;" text="Sign in">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Button>
+        <PasswordField fx:id="pass_field" layoutX="149.0" layoutY="218.0" prefHeight="42.0" prefWidth="276.0"
+                       promptText="password"/>
+        <PasswordField fx:id="pass_field_2" layoutX="149.0" layoutY="269.0" prefHeight="42.0" prefWidth="276.0"
+                       promptText="repeat password"/>
+    </children>
+</AnchorPane>

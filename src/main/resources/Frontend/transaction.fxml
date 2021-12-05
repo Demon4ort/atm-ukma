@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #D2F7DF;"
+            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="WindowControllers.ControllerTransaction">
+    <children>
+        <TextField fx:id="number" layoutX="205.0" layoutY="180.0" prefHeight="39.0" prefWidth="202.0"/>
+        <Text layoutX="73.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Input sum "
+              wrappingWidth="111.0894775390625">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Text>
+        <Text layoutX="29.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Input card number"
+              wrappingWidth="162.77737426757812">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Text>
+        <TextField fx:id="sum" layoutX="205.0" layoutY="120.0" prefHeight="39.0" prefWidth="202.0"/>
+        <Text layoutX="174.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TRANSACTION">
+            <font>
+                <Font size="38.0"/>
+            </font>
+        </Text>
+        <Button fx:id="transfer" layoutX="252.0" layoutY="253.0" mnemonicParsing="false" prefHeight="58.0"
+                prefWidth="96.0" style="-fx-font-weight: 700; -fx-background-color: #53DE81;" text="Transfer">
+            <font>
+                <Font size="15.0"/>
+            </font>
+        </Button>
+        <Button fx:id="quit" layoutX="513.0" layoutY="16.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="60.0"
+                style="-fx-font-weight: 700; -fx-background-color: #F3557F;" text="Quit"/>
+        <Text fx:id="status" layoutX="201.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              wrappingWidth="210.09649658203125">
+            <font>
+                <Font size="15.0"/>
+            </font>
+        </Text>
+    </children>
+</AnchorPane>
