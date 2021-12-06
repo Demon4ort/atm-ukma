@@ -8,16 +8,8 @@ import java.time.LocalDateTime
 object Model {
   sealed trait Entity extends Product with Serializable
 
-  trait Command extends Product with Serializable
-
-  final case class Block(cardId: Id) extends Command
-
-  final case class Maintenance() extends Command
-
-
   final case class Card(id: Option[Id] = none,
                         userId: Option[Id] = none,
-                        //                        currency: String = UUID.randomUUID.toString,
                         value: Double = 0,
                         blocked: Boolean = false) extends Entity
 
@@ -37,11 +29,6 @@ object Model {
     implicit def cardOrdering: Ordering[Card] = Ordering.by(_.value)
   }
 
-  object errors {
-    case class ExceptionWrongPassword(cardId: Id) extends Throwable
-
-    case class ApplicationException(msg: String) extends Throwable
-  }
 }
 
 

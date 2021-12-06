@@ -64,20 +64,12 @@ public class ControllerAuth {
                 }
                 stage.setTitle("Menu card");
                 stage.setScene(new Scene(root1));
-//                UserInfo.setUser(user);
-//                Model.Card card = com.cardByUserId(UserInfo.getUser().getId());
-//                CardInfo.setCard(card);
-//                System.out.println("FSTUSER"+UserInfo.getUser());
-
-
             }
         });
 
 
         reg.setOnMouseClicked(mouseEvent -> {
             Stage stage = (Stage) log.getScene().getWindow();
-            // do what you have to do
-            // stage.close();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Frontend/registration.fxml"));
             Parent root1 = null;
             try {
@@ -85,23 +77,9 @@ public class ControllerAuth {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            // Stage  stage2 = new Stage();
             stage.setTitle("Menu card");
             stage.setScene(new Scene(root1));
         });
 
     }
-
-
-//    private static String bytesToHex(byte[] hash) {
-//        StringBuilder hexString = new StringBuilder(2 * hash.length);
-//        for (int i = 0; i < hash.length; i++) {
-//            String hex = Integer.toHexString(0xff & hash[i]);
-//            if (hex.length() == 1) {
-//                hexString.append('0');
-//            }
-//            hexString.append(hex);
-//        }
-//        return hexString.toString();
-//    }
 }
